@@ -1,7 +1,6 @@
 PolymerMI : Polymer Property Prediction & Optimization (MI/BO/XAI Pipeline)
-This Pipeline is maked for help Laboratory exprience can be only using Linux base virture environment Tool
-Before the exprience, Save the time and buget from predict material information and explore automatic system
-And help exprience for this XAI based analysis
+Purpose 
+This Pipeline was developed as a lightweight tool that can support laboratory research using only a Linux-based virtual environment. By predicting material properties and performing automated exploration before actual experiments, it helps reduce time and experimental costs. In addition,XAI-based analysis provides interpretability that can guide experiment design and optimization.
 
 This repository provides a lightweight but complete machine learning pipeline for predicting  and optimizing polymer properties.
 It demonstrates core techniques in Materials Informatics (MI), including
