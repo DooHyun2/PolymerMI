@@ -1,7 +1,7 @@
 PolymerMI : Polymer Property Prediction & Optimization (MI/BO/XAI Pipeline)
 
-This repository contains a lightweight but complete ML pipeline for polymer property prediction and optimization.
-It was built to demonstrate experience in Materials Informatics (MI), including
+This repository provides a lightweight but complete machine learning pipeline for predicting  and optimizing polymer properties.
+It demonstrates core techniques in Materials Informatics (MI), including
 * Synthetic dataset generation
 * Random Forest baseline models
 * Feature importance analysis (Permutation / Gini)
@@ -20,7 +20,7 @@ Polymer_mi_sprint/
 --bo_gpr.py         # Bayesian Optimization (GPR)
 --xai_perm_pdp.py   # Permutation importance + PDP plots
 --xai_shap.py       # SHAP summary & dependence plots
---results/          # output figures, CSV logs, best params
+--results/          # Figures, CSV logs, best parameters
 --run_all.sh        # full pipeline runner
 
 Example Outputs
@@ -44,11 +44,11 @@ Python 3.10
 conda install pandas scikit-learn matplotlib optuna shap
 
 Purpose of This Repository
-This project was designed to learn and demonstrate key MI workflows
+This project demonstrates essential workflows in modern Materials Informatics
 * nonlinear structure-property modeling
 * ML-based polymer property prediction
 * ML-assisted polymer design (BO)
-* interpretable ML for materials (XAI)
+* interpretable ML for materials using (XAI)
 
   License
   MIT License
