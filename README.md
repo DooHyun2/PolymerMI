@@ -19,13 +19,21 @@ Target Property: polymer density (synthetic)
 Features: mw, hyd, xlink, side, tg_like
 
 Folder Structure
+
 --data_synth.py     # synthetic polymer dataset generator
+
 --mi_baseline.py    # RF-based MI baseline + feature importance
+
 --bo.optuna.py      # Bayesian Optimization (RF)    
+
 --bo_gpr.py         # Bayesian Optimization (GPR)
+
 --xai_perm_pdp.py   # Permutation importance + PDP plots
+
 --xai_shap.py       # SHAP summary & dependence plots
+
 --results/          # Figures, CSV logs, best parameters
+
 --run_all.sh        # full pipeline runner
 
 Example Outputs
