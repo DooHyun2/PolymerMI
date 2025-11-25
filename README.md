@@ -1,3 +1,4 @@
+shap_summary.png 
 PolymerMI : Polymer Property Prediction & Optimization (MI/BO/XAI Pipeline)
 Purpose 
 This Pipeline was developed as a lightweight tool that can support laboratory research using only a Linux-based virtual environment. By predicting material properties and performing automated exploration before actual experiments, it helps reduce time and experimental costs. In addition,XAI-based analysis provides interpretability that can guide experiment design and optimization.
