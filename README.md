@@ -1,10 +1,9 @@
-<img width="1600" height="700" alt="image" src="https://github.com/user-attachments/assets/72312d39-3223-4d74-8c36-b30928cc9306" />
-SHAP summary plot
-
-
 PolymerMI : Polymer Property Prediction & Optimization (MI/BO/XAI Pipeline)
 Purpose 
 This Pipeline was developed as a lightweight tool that can support laboratory research using only a Linux-based virtual environment. By predicting material properties and performing automated exploration before actual experiments, it helps reduce time and experimental costs. In addition,XAI-based analysis provides interpretability that can guide experiment design and optimization.
+
+<img width="1600" height="700" alt="image" src="https://github.com/user-attachments/assets/72312d39-3223-4d74-8c36-b30928cc9306" />
+SHAP summary plot
 
 Overview
 This repository provides a lightweight but complete machine learning pipeline for predicting and optimizing polymer properties.
