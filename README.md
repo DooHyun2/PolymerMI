@@ -1,5 +1,8 @@
 PolymerMI : Polymer Property Prediction & Optimization (MI/BO/XAI Pipeline)
+
 Purpose 
+
+
 This Pipeline was developed as a lightweight tool that can support laboratory research using only a Linux-based virtual environment. By predicting material properties and performing automated exploration before actual experiments, it helps reduce time and experimental costs. In addition,XAI-based analysis provides interpretability that can guide experiment design and optimization.
 
 <img width="1600" height="700" alt="image" src="https://github.com/user-attachments/assets/72312d39-3223-4d74-8c36-b30928cc9306" />
@@ -48,15 +51,15 @@ bash run_all.sh
 
 Or run individual modules
 
--Python data_synth.py
+-python data_synth.py
 
--Python mi_baseline.py
+-python mi_baseline.py
 
--Python bo_optuna.py
+-python bo_optuna.py
 
--Python bo_gpr.py
+-python bo_gpr.py
 
--Python shap_analysis.py
+-python shap_analysis.py
 
 #Environment
 
@@ -79,14 +82,25 @@ This project demonstrates essential workflows in modern Materials Informatics
 
   ![LLZO SHAP Beeswarm](results/llzo_shap_beeswarm.png)
 
-  Target: Ionic conductivity trend [sigma(ion] in LLZO (synthetic).
+  Target: Ionic conductivity trend sigma(ion) in LLZO (synthetic).
   Insight: Sintering temperature dominates sigma(ion), followed by dopant fraction
   and Li excess with clear non-linear effects; dopant type and grain size are secondary.
 
   ![SHAP dependence: dopant_frac](results/shap_depend_dopant_frac.png)
 
+  Dopant fraction was selected for further analysis due to its strong non-linear contribution 
+  Dopant fraction was selected for further analysis due to its strong non-linear contribution
+  Dopant fraction was selected for further analysis due to its strong non-linear
+  contribution observed in the global SHAP summary.
+
   
   Dependence: The effect of dopant fraction on sigma(ion) is non-linear and modulated
   by sintering temoerature, indicating coupled processing-composition effects.
   
+
+  
+ 
+  # How to run (LLZO example)
+  -python beeswarm.py
+  -python shap_LLZO.py
 
