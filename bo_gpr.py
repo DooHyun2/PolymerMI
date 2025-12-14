@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, WhiteKernel, ConstantKernel
-# data road
+# data load
 CSV = "synthetic_polymer.csv"
 if not os.path.exists(CSV):
     raise FileNotFoundError(f"{CSV} not found. Run data_synth.py first.")
@@ -30,7 +30,7 @@ rf_oracle.fit(X_all, y_all)
 def f_oracle(x: np.ndarray) -> float:
     """
     x: shape (dim,)
-    return: 예측 density (스칼라)
+    return: predicted density (scalar)
     """
     x = np.asarray(x).reshape(1, -1)
     return float(rf_oracle.predict(x)[0])
@@ -48,7 +48,7 @@ bounds = np.array(bounds)   # shape (dim, 2)
 rng = np.random.default_rng(42)
 
 def sample_random(n: int) -> np.ndarray:
-    """bounds 안에서 균일 샘플링"""
+    """Uniform sampling within feature bounds. """
     lows = bounds[:, 0]
     highs = bounds[:, 1]
     u = rng.random((n, dim))
@@ -103,7 +103,7 @@ def expected_improvement(X_cand: np.ndarray,
 def propose_next(gpr: GaussianProcessRegressor,
                  n_candidates: int = 2000) -> np.ndarray:
     """
-    후보 점들을 랜덤 샘플링하고 EI가 최대인 점을 선택
+    Randomly sample candidate points within bounds and select the one with the highest Expected Improvement (EI).
     """
     X_cand = sample_random(n_candidates)
     y_best = float(np.max(y_sample))
@@ -113,7 +113,7 @@ def propose_next(gpr: GaussianProcessRegressor,
 
 
 
-# BO loof
+# BO loop
 
 n_iter = 30  # BO cycle
 
