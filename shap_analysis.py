@@ -7,10 +7,10 @@ import shap
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 
-# 결과 폴더
+# directory 
 os.makedirs("results", exist_ok=True)
 
-# 1) 데이터 로드
+# Load data
 CSV = "synthetic_polymer.csv"
 if not os.path.exists(CSV):
     raise FileNotFoundError(f"{CSV} not found. Run data_synth.py first.")
@@ -21,7 +21,7 @@ y = df["density"]
 
 Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.25, random_state=42)
 
-# 2) RF 모델 (mi_baseline이랑 같은 느낌)
+# Train RF model
 rf = RandomForestRegressor(
     n_estimators=400,
     random_state=42,
@@ -29,17 +29,17 @@ rf = RandomForestRegressor(
 )
 rf.fit(Xtr, ytr)
 
-# 3) SHAP 계산 (TreeExplainer: RF/GBDT 전용)
+# Compute SHAP values
 explainer = shap.TreeExplainer(rf)
 shap_values = explainer.shap_values(Xte)   # shape = [n_samples, n_features]
 
-# 4) summary plot (각 특성의 전체 중요도 + 분포)
+# SHAP summary plot
 shap.summary_plot(shap_values, Xte, show=False)
 plt.tight_layout()
 plt.savefig("results/shap_summary.png", dpi=200)
 plt.close()
 
-# 5) 상위 3개 특성에 대한 dependence plot
+# SHAP dependence plots (top features)
 top_feats = ["mw", "hyd", "xlink"]
 for feat in top_feats:
     shap.dependence_plot(feat, shap_values, Xte, show=False)
