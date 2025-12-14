@@ -5,24 +5,21 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, WhiteKernel, ConstantKernel
-
-# ----------------------------
-# 0. 데이터 로드 & "진짜 함수" 준비
-# ----------------------------
+# data road
 CSV = "synthetic_polymer.csv"
 if not os.path.exists(CSV):
     raise FileNotFoundError(f"{CSV} not found. Run data_synth.py first.")
 
 df = pd.read_csv(CSV)
 
-# feature / target 분리
+# feature / target 
 X_all = df.drop(columns=["density"])
 y_all = df["density"].values
 
 feat_names = list(X_all.columns)
 dim = X_all.shape[1]
 
-# 여기서는 RF를 "진짜 실험/시뮬레이션" 대신 쓰는 오라클로 사용
+# using RF (Random Forest)
 rf_oracle = RandomForestRegressor(
     n_estimators=500,
     random_state=0,
@@ -38,11 +35,8 @@ def f_oracle(x: np.ndarray) -> float:
     x = np.asarray(x).reshape(1, -1)
     return float(rf_oracle.predict(x)[0])
 
-
-# ----------------------------
-# 1. 탐색 공간(bounds) 설정
-#    → 데이터의 min/max로 자동 설정
-# ----------------------------
+# set bound
+  
 bounds = []
 for col in feat_names:
     lo = X_all[col].min()
@@ -51,9 +45,6 @@ for col in feat_names:
 bounds = np.array(bounds)   # shape (dim, 2)
 
 
-# ----------------------------
-# 2. 초기 샘플링
-# ----------------------------
 rng = np.random.default_rng(42)
 
 def sample_random(n: int) -> np.ndarray:
@@ -63,14 +54,14 @@ def sample_random(n: int) -> np.ndarray:
     u = rng.random((n, dim))
     return lows + u * (highs - lows)
 
-# 초기 10개 점 평가
+# first 10
 n_init = 10
 X_sample = sample_random(n_init)
 y_sample = np.array([f_oracle(x) for x in X_sample])
 
-# ----------------------------
-# 3. GPR + Expected Improvement(EI) 정의
-# ----------------------------
+
+# GPR + Expected Improvement(EI)
+
 kernel = ConstantKernel(1.0, (0.1, 10.0)) * RBF(
     length_scale=np.ones(dim),
     length_scale_bounds=(0.1, 10.0)
@@ -99,7 +90,7 @@ def expected_improvement(X_cand: np.ndarray,
     mu, sigma = gpr.predict(X_cand, return_std=True)
     sigma = sigma.reshape(-1)
 
-    # sigma=0인 지점 처리
+    # sigma=0
     sigma_safe = np.where(sigma < 1e-12, 1e-12, sigma)
 
     imp = mu - y_best - xi
@@ -121,41 +112,40 @@ def propose_next(gpr: GaussianProcessRegressor,
     return X_cand[idx]
 
 
-# ----------------------------
-# 4. BO 루프
-# ----------------------------
-n_iter = 30  # BO 반복 횟수
+
+# BO loof
+
+n_iter = 30  # BO cycle
 
 history = []
 
 for t in range(n_iter):
-    # 4-1) GPR 핏
+    # GPR fit
     gpr = fit_gpr(X_sample, y_sample)
 
-    # 4-2) 현재 best
+    # last best model
     best_idx = int(np.argmax(y_sample))
     best_x = X_sample[best_idx]
     best_y = y_sample[best_idx]
     print(f"[iter {t:02d}] best_y = {best_y:.4f}")
 
-    # 기록
+    # history
     history.append({
         "iter": t,
         "best_y": best_y,
         **{f"best_{name}": float(val) for name, val in zip(feat_names, best_x)}
     })
 
-    # 4-3) 다음 점 제안
+    # suggest
     x_next = propose_next(gpr)
     y_next = f_oracle(x_next)
 
-    # 샘플 추가
+    # add samples
     X_sample = np.vstack([X_sample, x_next])
     y_sample = np.append(y_sample, y_next)
 
-# ----------------------------
-# 5. 최종 결과 저장
-# ----------------------------
+
+# save the results
 best_idx = int(np.argmax(y_sample))
 best_x = X_sample[best_idx]
 best_y = y_sample[best_idx]
