@@ -46,7 +46,8 @@ Example Outputs
 How to Run 
 bash run_all.sh
 
-OR run individual modules
+Or run individual modules
+
 Python data_synth.py
 Python mi_baseline.py
 Python bo_optuna.py
