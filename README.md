@@ -81,3 +81,5 @@ This project demonstrates essential workflows in modern Materials Informatics
   Insight: Sintering temperature dominates sigma(ion), followed by dopant fraction
   and Li excess with clear non-linear effects; dopant type and grain size are secondary.
 
+  ![SHAP dependence: dopant_frac](results/shap_depend_dopant_frac.png)
+
