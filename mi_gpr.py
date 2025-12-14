@@ -8,7 +8,7 @@ from sklearn.metrics import r2_score, mean_absolute_error
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, WhiteKernel, ConstantKernel
 
-# 1) 데이터 로드
+# Load data
 CSV = "synthetic_polymer.csv"
 if not os.path.exists(CSV):
     raise FileNotFoundError(f"{CSV} not found. Run data_synth.py first.")
@@ -19,7 +19,7 @@ y = df["density"]
 
 Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.25, random_state=42)
 
-# 2) 커널 설정 (RBF + WhiteNoise)
+# Define kernel (RBF + white noise)
 n_features = X.shape[1]
 kernel = ConstantKernel(1.0, (0.1, 10.0)) * RBF(
     length_scale=np.ones(n_features),
@@ -35,7 +35,7 @@ gpr = GaussianProcessRegressor(
 # 3) 학습
 gpr.fit(Xtr, ytr)
 
-# 4) 예측
+# Predict
 y_pred, y_std = gpr.predict(Xte, return_std=True)
 
 r2 = r2_score(yte, y_pred)
@@ -45,7 +45,7 @@ print("GPR R2:", round(r2, 4))
 print("GPR MAE:", round(mae, 4))
 print("Kernel after fit:", gpr.kernel_)
 
-# 5) 예측 vs 실제 플롯 저장
+# plot save
 os.makedirs("results", exist_ok=True)
 
 plt.figure()
