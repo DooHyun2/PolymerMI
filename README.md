@@ -100,7 +100,8 @@ This project demonstrates essential workflows in modern Materials Informatics
 
   
  
-  # How to run (LLZO example)
+  # How to run
   -python beeswarm.py
+  
   -python shap_LLZO.py
 
