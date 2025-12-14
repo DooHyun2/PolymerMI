@@ -48,15 +48,21 @@ bash run_all.sh
 
 Or run individual modules
 
-Python data_synth.py
-Python mi_baseline.py
-Python bo_optuna.py
-Python bo_gpr.py
-Python shap_analysis.py
+-Python data_synth.py
+
+-Python mi_baseline.py
+
+-Python bo_optuna.py
+
+-Python bo_gpr.py
+
+-Python shap_analysis.py
 
 Environment
-Python 3.10
-conda install pandas scikit-learn matplotlib optuna shap
+
+-Python 3.10
+
+-conda install pandas scikit-learn matplotlib optuna shap
 
 Purpose of This Repository
 This project demonstrates essential workflows in modern Materials Informatics
