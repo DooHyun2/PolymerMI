@@ -73,3 +73,11 @@ This project demonstrates essential workflows in modern Materials Informatics
 
   License
   MIT License
+
+
+  ![LLZO SHAP Beeswarm](results/llzo_shap_beeswarm.png)
+
+  Target: Ionic conductivity trend [sigma(ion] in LLZO (synthetic).
+  Insight: Sintering temperature dominates sigma(ion), followed by dopant fraction
+  and Li excess with clear non-linear effects; dopant type and grain size are secondary.
+
