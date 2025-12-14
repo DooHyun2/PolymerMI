@@ -58,11 +58,11 @@ Or run individual modules
 
 -Python shap_analysis.py
 
-Environment
+#Environment
 
 -Python 3.10
 
--conda install pandas scikit-learn matplotlib optuna shap
+-Tested in a conda environment (`mi310`).
 
 Purpose of This Repository
 This project demonstrates essential workflows in modern Materials Informatics
