@@ -75,6 +75,8 @@ This project demonstrates essential workflows in modern Materials Informatics
   MIT License
 
 
+  #LLZO Ionic Conductivity (Synthetic) — SHAP Analysis#
+
   ![LLZO SHAP Beeswarm](results/llzo_shap_beeswarm.png)
 
   Target: Ionic conductivity trend [sigma(ion] in LLZO (synthetic).
