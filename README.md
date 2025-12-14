@@ -85,3 +85,8 @@ This project demonstrates essential workflows in modern Materials Informatics
 
   ![SHAP dependence: dopant_frac](results/shap_depend_dopant_frac.png)
 
+  
+  Dependence: The effect of dopant fraction on sigma(ion) is non-linear and modulated
+  by sintering temoerature, indicating coupled processing-composition effects.
+  
+
