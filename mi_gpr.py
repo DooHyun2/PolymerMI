@@ -32,7 +32,7 @@ gpr = GaussianProcessRegressor(
     random_state=42
 )
 
-# 3) 학습
+# 3) train
 gpr.fit(Xtr, ytr)
 
 # Predict
