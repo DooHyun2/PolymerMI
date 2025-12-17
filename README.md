@@ -93,7 +93,7 @@ This project demonstrates essential workflows in modern Materials Informatics
 
   
   Dependence: The effect of dopant fraction on sigma(ion) is non-linear and modulated
-  by sintering temoerature, indicating coupled processing-composition effects.
+  by sintering temperature, indicating coupled processing-composition effects.
   
 
   
