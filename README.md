@@ -88,8 +88,6 @@ This project demonstrates essential workflows in modern Materials Informatics
 
   ![SHAP dependence: dopant_frac](results/shap_depend_dopant_frac.png)
 
-  Dopant fraction was selected for further analysis due to its strong non-linear contribution 
-  Dopant fraction was selected for further analysis due to its strong non-linear contribution
   Dopant fraction was selected for further analysis due to its strong non-linear
   contribution observed in the global SHAP summary.
 
