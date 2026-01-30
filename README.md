@@ -1,5 +1,9 @@
 PolymerMI : Polymer Property Prediction & Optimization (MI/BO/XAI Pipeline)
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/doohyun2/polymer-mi?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/r/doohyun2/polymer-mi)
+[![Docker Image Size](https://img.shields.io/docker/image-size/doohyun2/polymer-mi?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/r/doohyun2/polymer-mi)
+[![Docker Version](https://img.shields.io/docker/v/doohyun2/polymer-mi?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/r/doohyun2/polymer-mi)
+
 Purpose 
 
 
